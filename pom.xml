@@ -15,7 +15,7 @@
   </scm>  
   
 	<artifactId>org.liveSense.misc.queryBuilder.gwt</artifactId>
-	<packaging>jar</packaging>
+	<packaging>bundle</packaging>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>liveSense SQL QueryBuilder GWT specific classes</name>
 	<description>liveSense SQL QueryBuilder
@@ -32,6 +32,40 @@
             </resource>
         </resources>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-scr-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-scr-scrdescriptor</id>
+						<goals>
+							<goal>scr</goal>
+						</goals>
+						<configuration>
+							<sourceExcludes>**/client/**</sourceExcludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.sling</groupId>
+				<artifactId>maven-sling-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<!-- Which java packages are exported for other bundles -->
+						<Export-Package>
+							org.liveSense.misc.queryBuilder.gwt.*
+						</Export-Package>
+					</instructions>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
