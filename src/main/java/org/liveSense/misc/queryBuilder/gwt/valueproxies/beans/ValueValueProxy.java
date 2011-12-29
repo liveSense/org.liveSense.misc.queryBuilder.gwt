@@ -47,7 +47,7 @@ public interface ValueValueProxy extends ValueProxy {
 
 	public Date getValueAsDate();
 
-	public Enum getValueAsEnum();
+	public Enum<?> getValueAsEnum();
 
 	public BigInteger getValueAsBigInteger();
 

@@ -10,7 +10,7 @@ import com.google.web.bindery.requestfactory.shared.ProxyFor;
 @ProxyFor(AbstractOperand.class)
 public interface AbstractOperatorValueProxy {
 
-	public List getParams();
+	public List<?> getParams();
 
 	public AbstractOperatorValueProxy addCriteria(AbstractCriteriaValueProxy criteria);
 
@@ -20,7 +20,7 @@ public interface AbstractOperatorValueProxy {
 
 	public AbstractOperatorValueProxy addOperators(AbstractOperatorValueProxy[] operators);
 
-	public AbstractOperatorValueProxy addParams(List params);
+	public AbstractOperatorValueProxy addParams(List<?> params);
 
 	
 }
