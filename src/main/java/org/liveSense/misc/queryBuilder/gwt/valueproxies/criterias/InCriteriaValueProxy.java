@@ -6,9 +6,10 @@ import org.liveSense.misc.queryBuilder.criterias.InCriteria;
 import org.liveSense.misc.queryBuilder.gwt.valueproxies.beans.ValueValueProxy;
 
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
 @ProxyFor(InCriteria.class)
-public interface InCriteriaValueProxy extends AbstractCriteriaValueProxy {	
+public interface InCriteriaValueProxy extends ValueProxy, AbstractCriteriaValueProxy {	
 	
 	public List<ValueValueProxy> getValues();
 

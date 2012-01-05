@@ -1,7 +1,6 @@
 package org.liveSense.misc.queryBuilder.gwt.valueproxies.operands;
 
 
-import org.liveSense.misc.queryBuilder.beans.Value;
 import org.liveSense.misc.queryBuilder.gwt.valueproxies.beans.ValueValueProxy;
 import org.liveSense.misc.queryBuilder.operands.AbstractOperand;
 
@@ -13,7 +12,7 @@ public interface AbstractOperandValueProxy extends ValueProxy {
 
 	public String getQualifier();
 	
-	public Value getSource();
+	public ValueValueProxy getSource();
 	
 	public boolean isLiteral();
 	

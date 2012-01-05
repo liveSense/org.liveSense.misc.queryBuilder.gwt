@@ -4,9 +4,10 @@ import org.liveSense.misc.queryBuilder.criterias.GreaterCriteria;
 import org.liveSense.misc.queryBuilder.gwt.valueproxies.beans.ValueValueProxy;
 
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
+import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
 @ProxyFor(GreaterCriteria.class)
-public interface GreaterCriteriaValueProxy extends AbstractCriteriaValueProxy {
+public interface GreaterCriteriaValueProxy extends ValueProxy, AbstractCriteriaValueProxy {
 	
 	public ValueValueProxy getValue();
 	

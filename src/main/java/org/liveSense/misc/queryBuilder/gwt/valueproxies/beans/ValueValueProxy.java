@@ -27,8 +27,6 @@ public interface ValueValueProxy extends ValueProxy {
 
 	public void setValue(Date value);
 
-	public void setValue(Enum<?> value);
-
 	public void setValue(BigInteger value);
 
 	public void setValue(BigDecimal value);
@@ -46,8 +44,6 @@ public interface ValueValueProxy extends ValueProxy {
 	public Float getValueAsFloat();
 
 	public Date getValueAsDate();
-
-	public Enum<?> getValueAsEnum();
 
 	public BigInteger getValueAsBigInteger();
 
