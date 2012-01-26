@@ -8,7 +8,7 @@ import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
 @ProxyFor(AbstractOperand.class)
-public interface AbstractOperandValueProxy extends ValueProxy {	
+public interface OperandValueProxy extends ValueProxy {	
 
 	public String getQualifier();
 	

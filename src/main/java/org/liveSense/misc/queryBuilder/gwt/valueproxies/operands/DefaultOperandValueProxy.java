@@ -6,6 +6,6 @@ import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
 @ProxyFor(DefaultOperand.class)
-public interface DefaultOperandValueProxy extends ValueProxy, AbstractOperandValueProxy  {
+public interface DefaultOperandValueProxy extends ValueProxy, OperandValueProxy  {
 	
 }

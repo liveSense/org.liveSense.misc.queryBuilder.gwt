@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 
+import org.liveSense.misc.queryBuilder.beans.Value;
 import org.liveSense.misc.queryBuilder.beans.ValueDomain.ValueTypes;
 
-import com.google.gwt.resources.css.ast.CssProperty.Value;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
 

@@ -6,5 +6,5 @@ import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
 @ProxyFor(OrOperator.class)
-public interface OrOperatorValueProxy extends ValueProxy, AbstractOperatorValueProxy {
+public interface OrOperatorValueProxy extends ValueProxy, OperatorValueProxy {
 }

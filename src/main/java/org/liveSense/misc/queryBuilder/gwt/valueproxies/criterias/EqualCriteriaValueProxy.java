@@ -1,16 +1,17 @@
 package org.liveSense.misc.queryBuilder.gwt.valueproxies.criterias;
 
 import org.liveSense.misc.queryBuilder.criterias.EqualCriteria;
+import org.liveSense.misc.queryBuilder.gwt.valueproxies.beans.ValueValueProxy;
 
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
 @ProxyFor(EqualCriteria.class)
-public interface EqualCriteriaValueProxy extends ValueProxy, AbstractCriteriaValueProxy {
+public interface EqualCriteriaValueProxy extends ValueProxy, CriteriaValueProxy {
 	
-	public ValueProxy getValue();
+	public ValueValueProxy getValue();
 	
 	public void setValue(
-		ValueProxy value);
+		ValueValueProxy value);
 	
 }

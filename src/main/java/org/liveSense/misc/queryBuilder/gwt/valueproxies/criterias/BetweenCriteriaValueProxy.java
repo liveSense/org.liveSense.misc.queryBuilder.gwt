@@ -7,7 +7,7 @@ import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
 @ProxyFor(BetweenCriteria.class)
-public interface BetweenCriteriaValueProxy extends ValueProxy, AbstractCriteriaValueProxy {	
+public interface BetweenCriteriaValueProxy extends ValueProxy, CriteriaValueProxy {	
 
 	public ValueValueProxy getValue1();
 	
