@@ -9,8 +9,9 @@ import com.google.web.bindery.requestfactory.shared.ValueProxy;
 @ProxyFor(StartingWithCriteria.class)
 public interface StartingWithCriteriaValueProxy extends ValueProxy, CriteriaValueProxy {	
 
-	public ValueValueProxy getValue();
+	public ValueValueProxy getValueValue();
 	
-	public void setValue(ValueValueProxy value);
+	public void setValueValue(
+		ValueValueProxy value);
 	
 }
