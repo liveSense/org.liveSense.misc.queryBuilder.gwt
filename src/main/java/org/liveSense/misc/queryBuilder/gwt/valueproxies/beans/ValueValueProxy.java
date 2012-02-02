@@ -31,6 +31,24 @@ public interface ValueValueProxy extends ValueProxy {
 
 	public void setValue(BigDecimal value);
 
+	public void setValueAsString(String value);
+
+	public void setValueAsBoolean(Boolean value);
+
+	public void setValueAsInteger(Integer value);
+
+	public void setValueAsLong(Long value);
+
+	public void setValueAsDouble(Double value);
+
+	public void setValueAsFloat(Float value);
+
+	public void setValueAsDate(Date value);
+
+	public void setValueAsBigInteger(BigInteger value);
+
+	public void setValueAsBigDecimal(BigDecimal value);
+
 	public String getValueAsString();
 
 	public Boolean getValueAsBoolean();
