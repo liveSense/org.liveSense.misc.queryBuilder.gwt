@@ -25,5 +25,5 @@ public interface OperandValueProxy extends ValueProxy {
 	public void setLiteral(boolean literal);
 
 	public void setFunction(String function);
-	
+		
 }

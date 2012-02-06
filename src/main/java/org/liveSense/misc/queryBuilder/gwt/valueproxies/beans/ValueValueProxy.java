@@ -13,24 +13,6 @@ import com.google.web.bindery.requestfactory.shared.ValueProxy;
 @ProxyFor(Value.class)
 public interface ValueValueProxy extends ValueProxy {
 	
-	public void setValue(String value);
-
-	public void setValue(Boolean value);
-
-	public void setValue(Integer value);
-
-	public void setValue(Long value);
-
-	public void setValue(Double value);
-
-	public void setValue(Float value);
-
-	public void setValue(Date value);
-
-	public void setValue(BigInteger value);
-
-	public void setValue(BigDecimal value);
-
 	public void setValueAsString(String value);
 
 	public void setValueAsBoolean(Boolean value);
@@ -48,6 +30,8 @@ public interface ValueValueProxy extends ValueProxy {
 	public void setValueAsBigInteger(BigInteger value);
 
 	public void setValueAsBigDecimal(BigDecimal value);
+
+	public void setType(ValueTypes type);
 
 	public String getValueAsString();
 

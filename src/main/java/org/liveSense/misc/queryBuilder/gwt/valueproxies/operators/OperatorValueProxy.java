@@ -20,11 +20,13 @@ public interface OperatorValueProxy extends ValueProxy {
 
 	public void setOperators(List<OperatorValueProxy> operator);
 	
-	public void setOperator(AndOperatorValueProxy operator);
-
-	public void setOperator(OrOperatorValueProxy operator);
-
-	public void setOperator(NotOperatorValueProxy operator);
-
+	public CriteriaValueProxy getCriteria();
 	
+	public List<CriteriaValueProxy> getCriterias();
+	
+	public OperatorValueProxy getOperator();
+
+	public List<OperatorValueProxy> getOperators();
+	
+
 }
