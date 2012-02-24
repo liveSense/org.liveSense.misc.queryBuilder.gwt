@@ -1,9 +1,10 @@
 package org.liveSense.misc.queryBuilder.gwt.valueproxies.operands;
 
 
-import org.liveSense.misc.queryBuilder.gwt.valueproxies.beans.ValueValueProxy;
+import org.liveSense.misc.queryBuilder.gwt.valueproxies.beans.CompositeValueProxy;
 import org.liveSense.misc.queryBuilder.operands.AbstractOperand;
 
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
@@ -12,14 +13,14 @@ public interface OperandValueProxy extends ValueProxy {
 
 	public String getQualifier();
 	
-	public ValueValueProxy getSource();
+	public CompositeValueProxy getSource();
 	
 	public boolean isLiteral();
 	
 	public String getFunction();
 		
-	public void setSource(ValueValueProxy source);
-	
+	public void setSource(CompositeValueProxy source);
+
 	public void setQualifier(String qualifier);
 
 	public void setLiteral(boolean literal);

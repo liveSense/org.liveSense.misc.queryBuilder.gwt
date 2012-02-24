@@ -1,22 +1,23 @@
 package org.liveSense.misc.queryBuilder.gwt.valueproxies.criterias;
 
 import org.liveSense.misc.queryBuilder.criterias.BetweenCriteria;
-import org.liveSense.misc.queryBuilder.gwt.valueproxies.beans.ValueValueProxy;
+import org.liveSense.misc.queryBuilder.gwt.valueproxies.beans.CompositeValueProxy;
 
+import com.google.web.bindery.autobean.shared.AutoBean.PropertyName;
 import com.google.web.bindery.requestfactory.shared.ProxyFor;
 import com.google.web.bindery.requestfactory.shared.ValueProxy;
 
 @ProxyFor(BetweenCriteria.class)
 public interface BetweenCriteriaValueProxy extends ValueProxy, CriteriaValueProxy {	
 
-	public ValueValueProxy getValue1();
-	
+	public CompositeValueProxy getValue1();
+
 	public void setValue1(
-		ValueValueProxy value1);
-	
-	public ValueValueProxy getValue2();
+		CompositeValueProxy value1);
+
+	public CompositeValueProxy getValue2();
 	
 	public void setValue2(
-		ValueValueProxy value2);
+		CompositeValueProxy value2);
 
 }
