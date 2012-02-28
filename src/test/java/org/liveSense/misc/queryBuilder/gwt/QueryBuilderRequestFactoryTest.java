@@ -1,12 +1,16 @@
 package org.liveSense.misc.queryBuilder.gwt;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
 
 import junit.framework.Assert;
 
@@ -16,7 +20,6 @@ import org.liveSense.misc.queryBuilder.beans.Value;
 import org.liveSense.misc.queryBuilder.criterias.EqualCriteria;
 import org.liveSense.misc.queryBuilder.gwt.QueryBuilderTestHelper.QueryBuilderRequestContext;
 import org.liveSense.misc.queryBuilder.gwt.QueryBuilderTestHelper.QueryBuilderRequestFactory;
-import org.liveSense.misc.queryBuilder.gwt.QueryBuilderTestHelper.QueryBuilderService;
 import org.liveSense.misc.queryBuilder.gwt.valueproxies.beans.CompositeValueProxy;
 import org.liveSense.misc.queryBuilder.gwt.valueproxies.criterias.EqualCriteriaValueProxy;
 import org.liveSense.misc.queryBuilder.gwt.valueproxies.operands.OperandValueProxy;
@@ -29,10 +32,12 @@ import org.liveSense.misc.queryBuilder.operators.AndOperator;
 import org.liveSense.misc.queryBuilder.operators.NotOperator;
 import org.liveSense.misc.queryBuilder.operators.OrOperator;
 import org.mockito.ArgumentCaptor;
+import org.mortbay.log.Log;
 
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.google.web.bindery.autobean.shared.AutoBeanUtils;
 import com.google.web.bindery.requestfactory.shared.Receiver;
+import com.google.web.bindery.requestfactory.shared.ServerFailure;
 
 public class QueryBuilderRequestFactoryTest {
 
@@ -44,10 +49,25 @@ public class QueryBuilderRequestFactoryTest {
 
   @Before
   public void setup(){
-    mockService = RequestFactoryHelper.getMockService( QueryBuilderService.class );
+	System.setProperty("gwt.rf.ServiceLayerCache", "false");
+
+	mockService = RequestFactoryHelper.getMockService( QueryBuilderService.class );
     mockFactory = RequestFactoryHelper.createMock( QueryBuilderRequestFactory.class );
     cachedService = RequestFactoryHelper.getCachedService( QueryBuilderService.class );
     cachedFactory = RequestFactoryHelper.createCached( QueryBuilderRequestFactory.class );
+    
+    /*
+    // Resetting GWT Cache
+    Field field = ServiceLayer
+        field.setAccessible(true);
+
+        Field modifiersField = Field.class.getDeclaredField("modifiers");
+        modifiersField.setAccessible(true);
+        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+
+        field.set(null, newValue);
+     }
+     */
   }
   
   @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -75,7 +95,7 @@ public class QueryBuilderRequestFactoryTest {
   
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Test
-  public void testOperator() {
+  public void testOperatorRequestCallback() {
 
 		// Composite test
 
@@ -105,18 +125,11 @@ public class QueryBuilderRequestFactoryTest {
 
   @SuppressWarnings({ "rawtypes", "unchecked" })
   @Test
-  public void testOperator2() {
-
-	  /*
-		OperatorValueProxy operator = factory.andOperatorValueProxy();
-		EqualCriteriaValueProxy foreignKeyCriteria = factory.equalCriteriaValueProxy();
-		OperandValueProxy fieldName = factory.defaultOperandValueProxy();
-		CompositeValueProxy fieldNameValue = factory.compositeValueProxy();
-		CompositeValueProxy value = factory.compositeValueProxy();
-	*/
+  public void testOperatorDeserializerTest() {
 	  
+	    //QueryBuilderRequestContext req = mockFactory.context();// cachedFactory.context();
 	    QueryBuilderRequestContext req = cachedFactory.context();
-		OperatorValueProxy operator = req.create(AndOperatorValueProxy.class);
+	    OperatorValueProxy operator = req.create(AndOperatorValueProxy.class);
 		EqualCriteriaValueProxy foreignKeyCriteria = req.create(EqualCriteriaValueProxy.class);
 		OperandValueProxy fieldName = req.create(OperandValueProxy.class);
 		CompositeValueProxy fieldNameValue = req.create(CompositeValueProxy.class);
@@ -130,14 +143,17 @@ public class QueryBuilderRequestFactoryTest {
 		operator.setEqualCriteria(foreignKeyCriteria);
 		Assert.assertEquals("{\"equalCriteria\":{\"value\":{\"valueAsInteger\":1},\"operand\":{\"source\":{\"valueAsString\":\"testName\"}}}}", AutoBeanCodex.encode(AutoBeanUtils.getAutoBean(operator)).getPayload());
 
-//		when( service.setOperator(operator) ).thenReturn( operator);
 	    Receiver<Void> receiver = mock( Receiver.class );
 	    
 	    req.setOperator(operator).fire( receiver );
 	    
-	    ArgumentCaptor<Void> captor = (ArgumentCaptor)ArgumentCaptor.forClass( Void.class );
-	    verify( receiver ).onSuccess( captor.capture() );
-	   // OperatorValueProxy operatorProxy = captor.getValue();
+	    ArgumentCaptor<Void> captor = (ArgumentCaptor)ArgumentCaptor.forClass(Void.class );
+
+	    // Verify the the Deserialized object
+	    assertEquals(AndOperator.class.getName(), cachedService.getOperator().getClass().getName());
+	    assertEquals(EqualCriteria.class.getName(), cachedService.getOperator().getParams().get(0).getClass().getName());
+	    assertEquals("testName", ((EqualCriteria)cachedService.getOperator().getParams().get(0)).getOperand().getSource().getValueAsString());
+
   }
 
 }

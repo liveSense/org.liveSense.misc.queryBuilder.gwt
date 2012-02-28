@@ -30,7 +30,6 @@ import org.liveSense.misc.queryBuilder.gwt.valueproxies.operators.AndOperatorVal
 import org.liveSense.misc.queryBuilder.gwt.valueproxies.operators.NotOperatorValueProxy;
 import org.liveSense.misc.queryBuilder.gwt.valueproxies.operators.OperatorValueProxy;
 import org.liveSense.misc.queryBuilder.gwt.valueproxies.operators.OrOperatorValueProxy;
-import org.liveSense.misc.queryBuilder.operators.AbstractOperator;
 
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;
@@ -43,21 +42,6 @@ import com.google.web.bindery.requestfactory.shared.RequestFactory;
 import com.google.web.bindery.requestfactory.shared.Service;
 
 public class QueryBuilderTestHelper {
-
-	public class QueryBuilderService {
-		public List<AbstractOperator> getOperators() {
-			return null;
-		}
-		
-		public AbstractOperator getOperator() {
-			return null;
-		}
-
-		public void setOperator(AbstractOperator operator) {
-			System.out.println("Test");
-		}
-
-	}
 
 	@Service(value = QueryBuilderService.class, locator = CreateNewInstanceLocator.class)
 	@ExtraTypes({
