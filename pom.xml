@@ -6,7 +6,7 @@
       <groupId>com.github.livesense</groupId>
       <artifactId>org.liveSense.parent</artifactId>
       <version>2-SNAPSHOT</version>
-		<relativePath>../org.liveSense.parent</relativePath>
+		<relativePath>..</relativePath>
   	</parent>
 
   <scm>
@@ -87,30 +87,22 @@
 						</goals>
 						<phase>generate-sources</phase>
 					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>com.google.web.bindery</groupId>
-						<artifactId>requestfactory-apt</artifactId>
-						<version>${gwt.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			 <!-- Run annotation processors on src/test/java sources -->
-    			<plugin>
-      			<groupId>org.bsc.maven</groupId>
-      			<artifactId>maven-processor-plugin</artifactId>
-				<version>2.0.5</version>
-      			<executions>
-        				<execution>
+                    <execution>
           				<id>process-test</id>
           				<goals>
-            					<goal>process-test</goal>
+                            <goal>process-test</goal>
           				</goals>
           				<phase>generate-test-sources</phase>
-        				</execution>
-      			</executions>
-    			</plugin>
+                    </execution>
+				</executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.google.web.bindery</groupId>
+                        <artifactId>requestfactory-apt</artifactId>
+                        <version>${gwt.version}</version>
+                    </dependency>
+                </dependencies>                
+			</plugin>
 		      <!-- Google Plugin for Eclipse (GPE) won't see the source
 		           generated above by requestfactory-apt unless it is exposed
 		           as an additional source dir-->
@@ -206,11 +198,6 @@
       		<version>4.2.0.Final</version>
       		<scope>test</scope>
     		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.8.4</version>
-		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>

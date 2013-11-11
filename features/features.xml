@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><features name="liveSense-${liveSense.version}-misc-queryBuilder-gwt" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+	<feature name="liveSense-misc-queryBuilder-gwt" version="${liveSense.misc.queryBuilder.gwt.version}" description="liveSense misc queryBuilder gwt">
+        <feature>liveSense-framework-gwt</feature>
+        <feature>liveSense-misc-queryBuilder</feature>
+		<bundle>mvn:com.github.livesense/org.liveSense.misc.queryBuilder.gwt/${liveSense.misc.queryBuilder.gwt.version}</bundle>
+	</feature>
+</features>
