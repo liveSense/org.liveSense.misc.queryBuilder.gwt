@@ -35,27 +35,6 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-scr-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>generate-scr-scrdescriptor</id>
-						<goals>
-							<goal>scr</goal>
-						</goals>
-						<configuration>
-							<sourceExcludes>**/client/**</sourceExcludes>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.sling</groupId>
-				<artifactId>maven-sling-plugin</artifactId>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
 				<extensions>true</extensions>
 				<configuration>
@@ -161,12 +140,10 @@
 		<dependency>
 			<groupId>com.github.livesense</groupId>
 			<artifactId>org.liveSense.core</artifactId>
-            <version>${parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.livesense</groupId>
 			<artifactId>org.liveSense.misc.queryBuilder</artifactId>
-            <version>${parent.version}</version>
             <exclusions>
 				<exclusion>
 					<artifactId>javaee-api</artifactId>
